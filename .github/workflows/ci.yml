@@ -28,6 +28,8 @@ jobs:
           toolset: ${{steps.setup-php-sdk.outputs.toolset}}
       - name: Get igbinary repo
         run: git clone https://github.com/igbinary/igbinary D:\a\phpredis_m\pecl\igbinary
+      - name: debug1
+        run: dir D:\a\phpredis_m\pecl\igbinary
       - name: Build phpredis
         run: |
           phpize

@@ -28,17 +28,17 @@ jobs:
           toolset: ${{steps.setup-php-sdk.outputs.toolset}}
       - name: Get igbinary repo
         run: git clone https://github.com/igbinary/igbinary D:\a\phpredis_m\igbinary
+      - name: Build phpredis
+        run: |
+          phpize
+          ./configure --enable-redis --enable-redis-igbinary --with-prefix=${{steps.setup-php-sdk.outputs.prefix}}
+          nmake
       - name: debug1
         run: dir D:\a\phpredis_m
       - name: debug2
         run: dir D:\a\phpredis_m\phpredis_m
       - name: debug3
         run: dir D:\a\phpredis_m\igbinary
-      - name: Build phpredis
-        run: |
-          phpize
-          ./configure --enable-redis --enable-redis-igbinary --with-prefix=${{steps.setup-php-sdk.outputs.prefix}}
-          nmake
       - name: package
         run: |
           md binaries
